@@ -44,9 +44,9 @@ jobs:
       - name: 依赖构建
         uses: actions/configure-pages@v4
       - name: Install dependencies
-        run: pnpm install # 或 pnpm install / yarn install / bun install
+        run: pnpm install 
       - name: 构建应用
-        run: pnpm build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+        run: pnpm build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -59,7 +59,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
-    name: Deploy
+    name: 部署
     steps:
       - name: Magic Canvas 页面
         id: deployment
