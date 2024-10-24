@@ -75,7 +75,7 @@ function onSikp(key: string) {
   overflow: auto;
 }
 
-/* .ant-layout /deep/ .ant-layout-sider {
+.ant-layout /deep/ .ant-layout-sider {
   display: none;
-} */
+}
 </style>
