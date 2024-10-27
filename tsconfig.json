@@ -9,6 +9,9 @@
     }
   ],
   "rules": {
-    "array-bracket-spacing": ["off", "never"]
+    // "array-bracket-spacing": ["off", "never"]
+    "vue/multi-word-component-names": ["error", {
+      "ignores": ["index"]
+    }]
   }
 }

@@ -1,19 +1,23 @@
-import { debounce } from "lodash";
-function canvasResize(wight: number, height: number, wrap: any, canvas: any, draw: any): void {
+import { debounce } from 'lodash'
+function canvasResize(
+  wight: number,
+  height: number,
+  wrap: any,
+  canvas: any,
+  draw: any,
+): void {
   window.addEventListener(
-    "resize",
+    'resize',
     debounce(() => {
-      wight = wrap.offsetWidth;
-      height = wrap.offsetHeight;
+      wight = wrap.offsetWidth
+      height = wrap.offsetHeight
       if (wight > 0) {
-        canvas.width = wight;
-        canvas.height = height;
-        console.log(wight, height);
-        draw();
+        canvas.width = wight
+        canvas.height = height
+        console.log(wight, height)
+        draw()
       }
-    }, 400)
-  );
+    }, 400),
+  )
 }
-export {
-  canvasResize
-}
+export { canvasResize }

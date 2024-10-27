@@ -4,7 +4,11 @@
     <a-layout-sider v-model:collapsed="collapsed" collapsible>
       <div class="logo" />
       <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
-        <a-menu-item v-for="item in routes" :key="item.path" @click="onSikp(item.path)">
+        <a-menu-item
+          v-for="item in routes"
+          :key="item.path"
+          @click="onSikp(item.path)"
+        >
           <DesktopOutlined />
           <span>{{ item.name }}</span>
           <!-- {{ item.meta.icon }} -->
@@ -37,7 +41,7 @@
   </a-layout>
 </template>
 <script lang="ts" setup>
-import { RouterLink, RouterView, useRouter, useRoute } from "vue-router";
+import { RouterLink, RouterView, useRouter, useRoute } from 'vue-router';
 // import {
 //   PieChartOutlined,
 //   DesktopOutlined,
@@ -46,15 +50,15 @@ import { RouterLink, RouterView, useRouter, useRoute } from "vue-router";
 //   FileOutlined,
 // } from "@ant-design/icons-vue";
 
-import { ref } from "vue";
+import { ref } from 'vue';
 const collapsed = ref<boolean>(false);
-let routerPath = sessionStorage.getItem("routerPath") || "/";
+const routerPath = sessionStorage.getItem('routerPath') || '/';
 const selectedKeys = ref<string[]>([routerPath]);
-let routes = useRouter().options.routes;
-let router = useRouter();
+const routes = useRouter().options.routes;
+const router = useRouter();
 function onSikp(key: string) {
   selectedKeys.value = [key];
-  sessionStorage.setItem("routerPath", key);
+  sessionStorage.setItem('routerPath', key);
   router.push(key);
 }
 </script>
@@ -68,7 +72,7 @@ function onSikp(key: string) {
 .site-layout .site-layout-background {
   background: #fff;
 }
-[data-theme="dark"] .site-layout .site-layout-background {
+[data-theme='dark'] .site-layout .site-layout-background {
   background: #141414;
 }
 .layout-content {

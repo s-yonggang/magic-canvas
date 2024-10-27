@@ -15,9 +15,11 @@
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
     "@types/lodash": "^4.17.12",
+    "alea": "^1.0.1",
     "ant-design-vue": "4.x",
     "lodash": "^4.17.21",
     "pinia": "^2.2.4",
+    "simplex-noise": "^4.0.3",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
   },

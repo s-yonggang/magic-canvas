@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
-import { debounce } from "lodash";
-import { rangeValue, rangeVal } from "@/utils/rangeValue.ts";
+import { onMounted, ref } from 'vue';
+import { debounce } from 'lodash';
+import { rangeValue, rangeVal } from '@/utils/rangeValue.ts';
 const wrapDemo3 = ref<any>(null);
 const canvasDemo3 = ref<any>(null);
 onMounted(() => {
@@ -17,11 +17,14 @@ onMounted(() => {
   let height = wrap.offsetHeight;
   canvas.width = wight;
   canvas.height = height;
+
   const speed: number = 0.5;
-  const num: number = 200;
 
   class Vector {
-    constructor(public x: number, public y: number) {
+    constructor(
+      public x: number,
+      public y: number,
+    ) {
       this.x = x;
       this.y = y;
     }
@@ -29,7 +32,11 @@ onMounted(() => {
 
   class Agent {
     vel: Vector;
-    constructor(public x: number, public y: number, public radius: number) {
+    constructor(
+      public x: number,
+      public y: number,
+      public radius: number,
+    ) {
       this.x = x;
       this.y = y;
       this.vel = new Vector(rangeVal(speed), rangeVal(speed));
@@ -41,7 +48,7 @@ onMounted(() => {
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.arc(0, 0, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = "white";
+      ctx.fillStyle = 'white';
       ctx.fill();
       ctx.stroke();
       ctx.restore();
@@ -63,8 +70,9 @@ onMounted(() => {
   }
 
   function init() {
-    let ctx = canvas.getContext("2d");
-    ctx.fillStyle = "white";
+    const num: number = height * wight * 0.00025;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, wight, height);
     const agents: Array<any> = [];
     for (let i = 0; i < num; i++) {
@@ -102,7 +110,7 @@ onMounted(() => {
   init();
 
   window.addEventListener(
-    "resize",
+    'resize',
     debounce(() => {
       wight = wrap.offsetWidth;
       height = wrap.offsetHeight;
@@ -111,7 +119,7 @@ onMounted(() => {
         canvas.height = height;
         init();
       }
-    }, 600)
+    }, 600),
   );
 });
 </script>

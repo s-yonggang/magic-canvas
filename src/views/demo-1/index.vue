@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
-import { throttle, debounce } from "lodash";
+import { onMounted, ref } from 'vue';
+import { throttle, debounce } from 'lodash';
 // import { canvasResize } from "@/utils/canvasResize.ts";
 const wrapDemo1 = ref<any>(null);
 const canvasDemo1 = ref<any>(null);
@@ -19,18 +19,18 @@ onMounted(() => {
   canvas.height = height;
 
   function draw() {
-    let ctx = canvas.getContext("2d");
-    let startPos = wight / 2;
-    let lop = 14;
+    const ctx = canvas.getContext('2d');
+    const startPos = wight / 2;
+    const lop = 14;
     for (let i = 0; i < lop; i++) {
       for (let j = 0; j < lop; j++) {
-        let w = 40;
-        let h = 40;
-        let gap = 10;
-        let x = startPos - (lop * (w + gap)) / 2 + (w + gap) * i;
-        let y = 60 + (h + gap) * j;
+        const w = 40;
+        const h = 40;
+        const gap = 10;
+        const x = startPos - (lop * (w + gap)) / 2 + (w + gap) * i;
+        const y = 60 + (h + gap) * j;
         ctx.beginPath();
-        ctx.fillStyle = "#000";
+        ctx.fillStyle = '#000';
         ctx.lineWidth = 6;
         ctx.rect(x, y, w, h);
         ctx.stroke();
@@ -49,7 +49,7 @@ onMounted(() => {
   draw();
   // canvasResize(wight, height, wrap, canvas, draw);
   window.addEventListener(
-    "resize",
+    'resize',
     debounce(() => {
       wight = wrap.offsetWidth;
       height = wrap.offsetHeight;
@@ -58,7 +58,7 @@ onMounted(() => {
         canvas.height = height;
         draw();
       }
-    }, 600)
+    }, 600),
   );
 });
 </script>

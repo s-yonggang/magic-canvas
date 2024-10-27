@@ -10,8 +10,8 @@ const router = createRouter({
       name: 'home',
       component: () => import('../views/HomeView.vue'),
       meta: {
-        icon: '<PieChartOutlined />'
-      }
+        icon: '<PieChartOutlined />',
+      },
       // component: Layout
     },
     {
@@ -19,34 +19,42 @@ const router = createRouter({
       name: 'Demo 1',
       component: () => import('../views/demo-1/index.vue'),
       meta: {
-        icon: 'desktop-outlined'
-      }
+        icon: 'desktop-outlined',
+      },
     },
     {
       path: '/demo-2',
       name: 'Demo 2',
       component: () => import('../views/demo-2/index.vue'),
       meta: {
-        icon: 'user-outlined'
-      }
+        icon: 'user-outlined',
+      },
     },
     {
       path: '/demo-3',
       name: 'Demo 3',
       component: () => import('../views/demo-3/index.vue'),
       meta: {
-        icon: 'team-outlined'
-      }
+        icon: 'team-outlined',
+      },
     },
     {
       path: '/demo-4',
       name: 'Demo 4',
       component: () => import('../views/demo-4/index.vue'),
       meta: {
-        icon: 'team-outlined'
-      }
+        icon: 'team-outlined',
+      },
     },
-  ]
+    {
+      path: '/demo-5',
+      name: 'Demo 5',
+      component: () => import('../views/demo-5/index.vue'),
+      meta: {
+        icon: 'team-outlined',
+      },
+    },
+  ],
 })
 
 export default router

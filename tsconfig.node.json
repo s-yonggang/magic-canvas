@@ -5,28 +5,24 @@
     "vitest.config.*",
     "cypress.config.*",
     "nightwatch.conf.*",
-    "playwright.config.*",
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "*.ts"
+    "playwright.config.*"
   ],
   "compilerOptions": {
     "composite": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
     "noEmit": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "types": ["node"],
-    "allowJs": true,
-    "allowImportingTsExtensions": true,
-    // "skipLibCheck": true,
-    // 补充如下配置
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "allowJs": true,
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true
   }
 }

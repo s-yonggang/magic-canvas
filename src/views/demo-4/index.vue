@@ -1,14 +1,16 @@
 <template>
   <div ref="wrapDemo4" style="width: 100%; height: 100%; background: #000000">
-    <span style="color: #fff; position: absolute">有彩蛋!(*^_^*){{ message }}</span>
+    <span style="color: #fff; position: absolute"
+      >有彩蛋!(*^_^*){{ message }}</span
+    >
     <canvas ref="canvasDemo4" style="display: block; margin: auto" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
-import { debounce } from "lodash";
-const message = ref("");
+import { onMounted, ref } from 'vue';
+import { debounce } from 'lodash';
+const message = ref('');
 const wrapDemo4 = ref<any>(null);
 const canvasDemo4 = ref<any>(null);
 onMounted(() => {
@@ -16,11 +18,13 @@ onMounted(() => {
   const canvas = canvasDemo4.value;
   let wight = wrap.offsetWidth;
   let height = wrap.offsetHeight;
-  let ctx = canvas.getContext("2d", { willReadFrequently: true });
-  const typeCanvas: any = document.createElement("canvas");
-  const typeCtx: any = typeCanvas.getContext("2d", { willReadFrequently: true });
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  const typeCanvas: any = document.createElement('canvas');
+  const typeCtx: any = typeCanvas.getContext('2d', {
+    willReadFrequently: true,
+  });
 
-  let cell = 10; // 自定义像素
+  const cell: number = 10; // 自定义像素
   let cols: number;
   let rows: number;
   let numCells: number;
@@ -47,9 +51,9 @@ onMounted(() => {
     typeCanvas.height = typeCtxWH;
   }
 
-  let text: string = "S";
+  let text: string = 'S';
   let fontSize: number = 800;
-  const family: string = "serif";
+  const family: string = 'serif';
 
   function init(): void {
     sizeSet();
@@ -61,10 +65,10 @@ onMounted(() => {
     typeCtx.clearRect(0, 0, ctxWH, ctxWH);
 
     // ctx.scale(0.5, 0.5);
-    typeCtx.fillStyle = "black";
+    typeCtx.fillStyle = 'black';
     typeCtx.fillRect(0, 0, typeCtxWH, typeCtxWH);
     fontSize = typeCtxWH;
-    typeCtx.fillStyle = "white";
+    typeCtx.fillStyle = 'white';
     typeCtx.font = `900 ${fontSize}px ${family}`;
     // typeCtx.textBaseline = "top";
 
@@ -75,7 +79,8 @@ onMounted(() => {
     const mx = metrics.actualBoundingBoxLeft * -1;
     const my = metrics.actualBoundingBoxAscent * -1;
     const mw = metrics.actualBoundingBoxLeft + metrics.actualBoundingBoxRight;
-    const mh = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+    const mh =
+      metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
     const tx = (typeCtxWH - mw) * 0.5 - mx;
     const ty = (typeCtxWH - mh) * 0.5 - my;
     typeCtx.save();
@@ -85,14 +90,14 @@ onMounted(() => {
     typeCtx.fillText(text, 0, 0);
     typeCtx.restore();
 
-    ctx.fillStyle = "black";
+    ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, ctxWH, ctxWH);
-    ctx.textBaseline = "middle";
-    ctx.textAlign = "center";
-    const typeData = typeCtx.getImageData(0, 0, typeCtxWH, typeCtxWH).data;
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'center';
+    const typeData = typeCtx?.getImageData(0, 0, typeCtxWH, typeCtxWH).data;
     for (let i = 0; i < numCells; i++) {
       const col = i % typeCtxWH; // 这里为什么取余?
-      const row = Math.floor(i / typeCtxWH);
+      const row = Math.floor(i / typeCtxWH); // 这里为啥取整？
 
       // const col = Math.floor(i / typeCtxWH);
       // const row = Math.floor(i / typeCtxWH);
@@ -134,18 +139,18 @@ onMounted(() => {
   init();
 
   function getGlyph(v: any): string {
-    if (v < 50) return "";
-    if (v < 70) return "magic canvas";
-    if (v < 10) return "+";
-    if (v < 120) return "*";
+    if (v < 50) return '';
+    if (v < 70) return '`';
+    if (v < 10) return '+';
+    if (v < 120) return '*';
     const rdm = Math.floor(Math.random() * 10);
-    const str = "*-+\=^'❀~./".split("")[rdm];
+    const str = "*-+\=^'❀~./".split('')[rdm];
     // const str = "♩♪♫♬♭❀♮♯°ø".split("")[rdm];
     return str;
   }
 
-  document.addEventListener("keyup", onkeyup);
-  function onkeyup(e: KeyboardEvent) {
+  document.addEventListener('keydown', onkeydown);
+  function onkeydown(e: KeyboardEvent) {
     text = e.key.toUpperCase();
     init();
     message.value = `----这都被你发现了!`;
@@ -155,12 +160,12 @@ onMounted(() => {
     init();
   }
 
-  const resizeObserver = new ResizeObserver((entries) => {
+  const resizeObserver = new ResizeObserver(entries => {
     for (const entry of entries) {
       resizeCanvas();
     }
   });
   resizeObserver.observe(wrapDemo4.value);
-  window.addEventListener("resize", debounce(resizeCanvas, 600));
+  window.addEventListener('resize', debounce(resizeCanvas, 600));
 });
 </script>
