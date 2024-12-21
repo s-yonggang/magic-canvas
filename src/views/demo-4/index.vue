@@ -1,8 +1,8 @@
 <template>
   <div ref="wrapDemo4" style="width: 100%; height: 100%; background: #000000">
-    <span style="color: #fff; position: absolute"
+    <!-- <span style="color: #fff; position: absolute"
       >有彩蛋!(*^_^*){{ message }}</span
-    >
+    > -->
     <canvas ref="canvasDemo4" style="display: block; margin: auto" />
   </div>
 </template>
@@ -118,7 +118,7 @@ onMounted(() => {
 
       // 自定义符号/图形
       if (Math.random() < 0.2 && r > 50) {
-        ctx.font = `${cell * 3}px ${family}`;
+        ctx.font = `${cell * 2}px ${family}`;
       } else {
         ctx.font = `${cell}px ${family}`;
       }
@@ -140,20 +140,22 @@ onMounted(() => {
 
   function getGlyph(v: any): string {
     if (v < 50) return '';
-    if (v < 70) return '`';
-    if (v < 10) return '+';
-    if (v < 120) return '*';
+    if (v < 70) return '自由、民主、公平`';
+    if (v < 90) return '';
+    if (v < 120) return '';
     const rdm = Math.floor(Math.random() * 10);
-    const str = "*-+\=^'❀~./".split('')[rdm];
+    const str = `*-+\=^'❀~./`.split('')[rdm];
     // const str = "♩♪♫♬♭❀♮♯°ø".split("")[rdm];
     return str;
   }
 
   document.addEventListener('keydown', onkeydown);
   function onkeydown(e: KeyboardEvent) {
-    text = e.key.toUpperCase();
-    init();
-    message.value = `----这都被你发现了!`;
+    if (!e.getModifierState(e.key)) {
+      text = e.key.toUpperCase();
+      init();
+    }
+    // message.value = `----这都被你发现了!`;
   }
 
   function resizeCanvas() {
