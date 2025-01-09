@@ -20,18 +20,20 @@ onMounted(() => {
 
   function draw() {
     const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, wight, height);
     const startPos = wight / 2;
     const lop = 14;
+    const wLength = wight < height ? wight : height;
     for (let i = 0; i < lop; i++) {
       for (let j = 0; j < lop; j++) {
-        const w = 40;
-        const h = 40;
+        const w = wLength * 0.04;
+        const h = wLength * 0.04;
         const gap = 10;
         const x = startPos - (lop * (w + gap)) / 2 + (w + gap) * i;
-        const y = 60 + (h + gap) * j;
+        const y = height / 2 - (lop * h) / 2 - 60 + (h + gap) * j;
         ctx.beginPath();
         ctx.fillStyle = '#000';
-        ctx.lineWidth = 6;
+        ctx.lineWidth = w * 0.1;
         ctx.rect(x, y, w, h);
         ctx.stroke();
         ctx.closePath();

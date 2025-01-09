@@ -20,10 +20,7 @@
       <!-- 头部 -->
       <!-- <a-layout-header style="background: #fff" /> -->
       <!-- 内容 -->
-      <a-layout-content
-        class="layout-content"
-        style="padding: 16px; box-sizing: border-box; hight: 'auto'"
-      >
+      <a-layout-content class="layout-content">
         <!-- <a-breadcrumb style="margin: 16px 0">
           <a-breadcrumb-item>User</a-breadcrumb-item>
           <a-breadcrumb-item>Bill</a-breadcrumb-item>
@@ -76,6 +73,9 @@ function onSikp(key: string) {
   background: #141414;
 }
 .layout-content {
+  height: auto;
+  padding: 16px;
+  box-sizing: border-box;
   overflow: auto;
 }
 

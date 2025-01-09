@@ -13,9 +13,9 @@ const canvasDemo3 = ref<any>(null);
 onMounted(() => {
   const wrap = wrapDemo3.value;
   const canvas = canvasDemo3.value;
-  let wight = wrap.offsetWidth;
+  let width = wrap.offsetWidth;
   let height = wrap.offsetHeight;
-  canvas.width = wight;
+  canvas.width = width;
   canvas.height = height;
 
   const speed: number = 0.5;
@@ -56,7 +56,7 @@ onMounted(() => {
     update() {
       this.x += this.vel.x;
       this.y += this.vel.y;
-      if (this.x < 0 || this.x > wight) {
+      if (this.x < 0 || this.x > width) {
         this.vel.x *= -1;
       }
       if (this.y < 0 || this.y > height) {
@@ -70,13 +70,13 @@ onMounted(() => {
   }
 
   function init() {
-    const num: number = height * wight * 0.00025;
+    const num: number = height * width * 0.00025;
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, wight, height);
+    ctx.fillRect(0, 0, width, height);
     const agents: Array<any> = [];
     for (let i = 0; i < num; i++) {
-      const x = Math.random() * wight;
+      const x = Math.random() * width;
       const y = Math.random() * height;
       agents.push(new Agent(x, y, rangeValue(10)));
       // agents[i].draw(ctx);
@@ -112,10 +112,10 @@ onMounted(() => {
   window.addEventListener(
     'resize',
     debounce(() => {
-      wight = wrap.offsetWidth;
+      width = wrap.offsetWidth;
       height = wrap.offsetHeight;
-      if (wight > 0) {
-        canvas.width = wight;
+      if (width > 0) {
+        canvas.width = width;
         canvas.height = height;
         init();
       }
